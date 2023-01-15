@@ -5,19 +5,31 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-/* Страница Стива */
-router.get('steve/public/images/steve.jpg', function(req, res, next) {
-    res.send("<h1>Страница Стива</h1>")
+/* Страница стива */
+router.get('/steve', function(req, res, next) {
+    res.render('cat', {
+        title: "стива",
+        picture: "steve/public/images/steve.jpg",
+        desc: "Главный персонаж игры маинкрафт, его главной задачей является убийство дракона края. Однако после достижения этой цели можно продолжать развиваться и строить различные механизмы и сооружения."
+    });
 });
 
-/* Страница Дракона */
-router.get('steve/public/images/dargon.jpg', function(req, res, next) {
-    res.send("<h1>Страница Дракона</h1>")
+/* Страница Дракон */
+router.get('/kompot', function(req, res, next) {
+    res.render('cat', {
+        title: "Дракон",
+        picture: "steve/public/images/dargon.jpg",
+        desc: "Главный босс игры Маинкрафт. Обитает в измерении энд мир. Его должен победить стив чтобы пройти игру."
+    });
 });
 
-/* Страница Визер */
-router.get('steve/public/images/vizer.jpg', function(req, res, next) {
-    res.send("<h1>Страница Визер</h1>")
+/* Страница визер */
+router.get('/vizer', function(req, res, next) {
+    res.render('cat', {
+        title: "визер",
+        picture: "steve/public/images/vizer.jpgimages",
+        desc: "Побочный босс. За его убийство дается звезда нижнего мира. Для его призыва нужно 3 головы скелета-иссушителя."
+    });
 });
 
 
