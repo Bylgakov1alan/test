@@ -5,8 +5,9 @@ var steve = require("../models/steve").steve
 /* GET home page. */
 router.get('/', function(req, res, next) {
 steve.find({},{_id:0,title:1,nick:1},function(err,menu){
-    res.render('index', { title: 'маинкрафт', menu: menu});
-    })
+    req.session.greeting = "Hi!!!"
+    res.render('index', { title: 'маинкрафт', menu: menu });
+});
 });
 
 /* Страница стива */

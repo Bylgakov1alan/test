@@ -42,11 +42,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+var MongoStore = require('connect-mongo')
 app.use(session({
     secret: "steve",
     cookie:{maxAge:60*1000},
     resave: true,
-    saveUninitialized: true	
+    saveUninitialized: true,
+    store: MongoStore.create({mongoUrl: 'mongodb://localhost:27017/steve'})
 }))
 
 
