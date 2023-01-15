@@ -7,27 +7,27 @@ router.get('/', function(req, res, next) {
 });
 /* Страница стива */
 router.get('/steve', function(req, res, next) {
-    res.render('cat', {
-        title: "стива",
-        picture: "steve/public/images/steve.jpg",
+    res.render('steve', {
+        title: "стив",
+        picture: "https://rare-gallery.com/uploads/posts/235370-steve-minecraft-1920x1080.jpg",
         desc: "Главный персонаж игры маинкрафт, его главной задачей является убийство дракона края. Однако после достижения этой цели можно продолжать развиваться и строить различные механизмы и сооружения."
     });
 });
 
 /* Страница Дракон */
-router.get('/kompot', function(req, res, next) {
-    res.render('cat', {
+router.get('/dragon', function(req, res, next) {
+    res.render('steve', {
         title: "Дракон",
-        picture: "steve/public/images/dargon.jpg",
+        picture: "https://phonoteka.org/uploads/posts/2022-09/1663296867_1-phonoteka-org-p-ender-drakon-art-krasivo-1.png",
         desc: "Главный босс игры Маинкрафт. Обитает в измерении энд мир. Его должен победить стив чтобы пройти игру."
     });
 });
 
 /* Страница визер */
 router.get('/vizer', function(req, res, next) {
-    res.render('cat', {
+    res.render('steve', {
         title: "визер",
-        picture: "steve/public/images/vizer.jpgimages",
+        picture: "https://i.ytimg.com/vi/6OzbF2u5MhM/maxresdefault.jpg",
         desc: "Побочный босс. За его убийство дается звезда нижнего мира. Для его призыва нужно 3 головы скелета-иссушителя."
     });
 });
