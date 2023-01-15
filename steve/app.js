@@ -6,6 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose')
 mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://localhost/hunters')
+var session = require("express-session")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -41,5 +42,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+app.use(session({
+    secret: "steve",
+    cookie:{maxAge:60*1000},
+    resave: true,
+    saveUninitialized: true	
+}))
+
 
 module.exports = app;

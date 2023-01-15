@@ -21,9 +21,9 @@ router.get("/:nick", function(req, res, next){
     function(err, result){
         if(err) return next(err)
         var steve = result[0]
-        var steves = result[1] || []
+        var steve = result[1] || []
         // console.log(steve)
-        if(!steves) return next (new Error("Нет такого персонажа в этой игре"))
+        if(!steve) return next (new Error("Нет такого персонажа в этой игре"))
         // console.log(steve.avatar)
         res.render('steve', {
             title: steve.title,
