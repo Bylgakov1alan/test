@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose')
+mongoose.set('strictQuery', true);
+mongoose.connect('mongodb://localhost/hunters')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -10,6 +13,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
+app.engine('ejs',require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -39,8 +43,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-// view engine setup
-app.engine('ejs',require('ejs-locals'));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
