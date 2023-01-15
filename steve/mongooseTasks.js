@@ -1,13 +1,13 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/test')
+mongoose.set('strictQuery', true);
+mongoose.connect('mongodb://localhost/test1')
+var steve = require("./models/steve").steve
 
-var Cat = mongoose.model('steve', { name: String })
-
-var kitty = new Cat({ name: 'steve' })
-kitty.save(function (err) {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('rrr')
-    }
+var steve = new steve({
+    title: "dragon",
+    nick: "vizer"
+})
+console.log(steve)
+steve.save(function(err, steve, affected){
+    console.log(steve.title)
 })
