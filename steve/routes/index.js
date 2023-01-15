@@ -6,7 +6,7 @@ var steve = require("../models/steve").steve
 router.get('/', function(req, res, next) {
 steve.find({},{_id:0,title:1,nick:1},function(err,menu){
     req.session.greeting = "Hi!!!"
-    res.render('index', { title: 'маинкрафт', menu: menu });
+    res.render('index', { title: 'express', menu: menu, counter:req.session.counter  });
 });
 });
 
