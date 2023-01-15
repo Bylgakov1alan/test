@@ -13,6 +13,14 @@ router.get('/steve', function(req, res, next) {
         desc: "Главный персонаж игры маинкрафт, его главной задачей является убийство дракона края. Однако после достижения этой цели можно продолжать развиваться и строить различные механизмы и сооружения."
     });
 });
+/* Страница маинкрафт */
+router.get('/maincraft', function(req, res, next) {
+    res.render('steve', {
+        title: "маинкрафт",
+        picture: "https://image.winudf.com/v2/image1/Y29tLnBvY2tldGVkaXRpb25mcmVlLm1vZGZvcm1pbmVjcmFmdC5tb2RzZm9ybWNwZV9zY3JlZW5fcnUtUlVfN18xNTU4NzgwODU0XzAwMg/screen-7.jpg?fakeurl=1&type=.jpg",
+        desc: "Маинкрафт игра в которую играют миллионы людей. Это песочница с открытым миром, в котором можно делать все, что захочется."
+    });
+});
 
 /* Страница Дракон */
 router.get('/dragon', function(req, res, next) {
