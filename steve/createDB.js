@@ -1,6 +1,5 @@
 var MongoClient = require('mongodb').MongoClient
 var data = require("./data.js").data
-
 const uri = "mongodb://localhost:27017/"
 const client = new MongoClient(uri)
 async function run() {
@@ -9,11 +8,12 @@ await client.connect();
 var database = client.db("steve");
 database.dropDatabase()
 database = client.db("steve");
-const hunter = database.collection("steve");
-const result = await hunter.insertOne({name:"steve"});
-console.log(`${result} documents were inserted`);
+const cats = database.collection("steve");
+const result = await cats.insertMany(data);
+console.log(`${result.insertedCount} documents were inserted`);
 } finally {
 await client.close();
 }
 }
 run()
+
