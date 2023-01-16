@@ -8,28 +8,17 @@ var async = require("async")
 //   res.send('Новый маршрутизатор, для маршрутов, начинающихся с steve');
 // });
 
-/* Страница маинкрафта */
+/* Страница маинкрафта*/
 router.get("/:nick", function(req, res, next){
-    async.parallel([
-        function(callback){
-            steve.findOne({nick: req.params.nick},callback)
-        },
-        function(callback){
-            steve.find({},{_id:0,title:1,nick:1}, callback)
-        }
-    ],
-    function(err, result){
+
+    steve.findOne({nick: req.params.nick}, function(err, steve){
         if(err) return next(err)
-        var steve = result[0]
-        var steve = result[1] || []
         // console.log(steve)
         if(!steve) return next (new Error("Нет такого персонажа в этой игре"))
-        // console.log(steve.avatar)
         res.render('steve', {
             title: steve.title,
             picture: steve.avatar,
-            desc: steve.desc, 
-            menu: steve
+            desc: steve.desc
         })
     })
 });
