@@ -1,26 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var steve = require("../models/steve").steve
-var async = require("async")
+var steve= require("../models/steve").steve
 
-// /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('Новый маршрутизатор, для маршрутов, начинающихся с steve');
-// });
-
-/* Страница маинкрафта*/
-router.get("/:nick", function(req, res, next){
-
-    steve.findOne({nick: req.params.nick}, function(err, steve){
-        if(err) return next(err)
-        // console.log(steve)
-        if(!steve) return next (new Error("Нет такого персонажа в этой игре"))
-        res.render('steve', {
-            title: steve.title,
-            picture: steve.avatar,
-            desc: steve.desc
-        })
-    })
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    req.session.greeting = "Hi!!!"
+    res.render('index', { title: 'персонажи маинкрафта', counter:req.session.counter });
 });
+
+/* GET login/registration page. */
+router.get('/logreg', function(req, res, next) {
+res.render('logreg', {title: 'Вход'});
+});
+
+
 
 module.exports = router;

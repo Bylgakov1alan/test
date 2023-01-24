@@ -14,6 +14,9 @@ var steveRouter = require('./routes/steve');
 
 var app = express();
 
+var username = req.body.username
+var password = req.body.password
+
 // view engine setup
 app.engine('ejs',require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +42,7 @@ app.use(function(req,res,next){
 })
 
 app.use(require("./middleware/createMenu.js"))
+app.use(require("./middleware/createUser.js"))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
